@@ -73,11 +73,17 @@ var AndroidGradleGenerator = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.appName = props.appName;
       this.packageName = props.packageName;
-      this.packageFolder = this.packageName.replace(/\./g, '/');
       this.minApiLevel = props.minApiLevel;
       this.minAndroidSDK = (this.minApiLevel + 1);
-      this.className = this._.classify(this._.slugify(this._.humanize(props.appName.replace(/ /g, ''))));
-      this.projectName = this._.camelize(this.className);
+
+      if(this.packageName !== undefined) {
+        this.packageFolder = this.packageName.replace(/\./g, '/');
+      }
+
+      if(this.appName !== undefined) {
+          this.className = this._.classify(this._.slugify(this._.humanize(props.appName.replace(/ /g, ''))));
+          this.projectName = this._.camelize(this.className);
+      }
 
       done();
     }.bind(this));
