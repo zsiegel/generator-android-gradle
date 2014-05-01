@@ -1,0 +1,11 @@
+{
+  "name": "generator-android-gradle",
+  "version": "1.0.0",
+  "description": "An Android+Gradle application created by the android-gradle yeoman generator",
+  "dependencies": {},
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
