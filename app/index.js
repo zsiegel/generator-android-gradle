@@ -106,6 +106,9 @@ var AndroidGradleGenerator = yeoman.generators.Base.extend({
     this.log('\n' + chalk.green('Creating ') + 'android resources:');
     this.directory('res', 'AndroidApp/res');
 
+    this.log('\n' + chalk.green('Creating ') + 'android libs:');
+    this.directory('libs', 'AndroidApp/libs');
+
     this.log('\n' + chalk.green('Creating ') + 'android configurations:');
     this.template('config/android/_AndroidManifest.xml', 'AndroidApp/AndroidManifest.xml');
     this.template('config/android/_build.gradle', 'AndroidApp/build.gradle');
@@ -186,7 +189,7 @@ AndroidGradleGenerator.prototype.androidSrcFiles = function androidSrcFiles() {
   var srcDir = 'AndroidApp/src/' + this.packageFolder + '/';
   this.template('src/main/_MainActivity.java', srcDir + 'MainActivity.java');
 
-  srcDir += 'common/logger';
+  srcDir += 'common/logger/';
   this.template('src/main/common/logger/_Log.java', srcDir + 'Log.java');
   this.template('src/main/common/logger/_LogFragment.java', srcDir + 'LogFragment.java');
   this.template('src/main/common/logger/_LogNode.java', srcDir + 'LogNode.java');

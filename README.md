@@ -1,9 +1,10 @@
 # generator-android-gradle [![Build Status](https://secure.travis-ci.org/olakra/generator-android-gradle.png?branch=master)](https://travis-ci.org/olakra/generator-android-gradle)
 
-> [Yeoman](http://yeoman.io) generator
-
-
 ## Getting Started
+
+### What is android-gradle?
+
+android-gradle is a [Yeoman](http://yeoman.io) generator, used to create an [Android](http://developer.android.com) + [Gradle](http://www.gradle.org/) project.
 
 ### What is Yeoman?
 
@@ -41,6 +42,46 @@ Yeoman has a heart of gold. He's a person with feelings and opinions, but he's v
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
+## Post Installation Configuration
+
+Once the installation has completed successfully the **local.properties** file needs to be updated to point to your Android SDK directory.
+
+In my environment, I have the sdk installed on : ** /opt/lib/android/android-sdk-macosx **
+thus my local.properties looks like
+
+```
+sdk.dir=/opt/lib/android/android-sdk-macosx
+```
+
+## Building and Running the app
+
+### Building the project using gradle
+
+Once the local.properties file has been updated, **gradle** is available on the shell, execute:
+
+```
+$ gradle build
+```
+This compiles and builds the apk files in the **AndroidApp/builds/apk** directory
+
+### Starting the emulator
+
+To start the emulator execute: 
+
+```
+$ android avd
+```
+If configured correctly, this would start the avd allowing you to start the emulator
+
+### Installing the app
+
+To install and run the app on the emulator execute: 
+
+```
+$ adb install AndroidApp/build/apk/AndroidApp-debug-unaligned.apk
+```
+
+This will create the **Hello World** app on the emulator. 
 
 ## License
 
