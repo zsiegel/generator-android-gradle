@@ -1,5 +1,5 @@
 {
-  "name": "generator-android-gradle",
+  "name": "generator-android-gradle-zsiegel",
   "version": "1.0.0",
   "description": "Yeoman generator for Android+Gradle",
   "keywords": [
@@ -16,15 +16,15 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/olakra/generator-android-gradle.git"
+    "url": "https://github.com/zsiegel/generator-android-gradle"
   },
   "author": {
     "name": "Oscar Lakra",
     "email": "olakra@users.noreply.github.com",
     "url": "https://github.com/olakra"
   },
-  "homepage": "https://github.com/olakra/generator-android-gradle",
-  "bugs": "https://github.com/olakra/generator-android-gradle/issues",
+  "homepage": "https://github.com/zsiegel/generator-android-gradle",
+  "bugs": "https://github.com/zsiegel/generator-android-gradle/issues",
   "engines": {
     "node": ">=0.10.0",
     "npm": ">=1.2.10"

@@ -91,14 +91,13 @@ var AndroidGradleGenerator = yeoman.generators.Base.extend({
 
   app: function () {
     var _appDir = [
-      'AndroidApp',
-      'AndroidApp/assets',
-      'AndroidApp/bin',
-      'AndroidApp/gen',
-      'AndroidApp/src',
-      'AndroidApp/tests',
-      'AndroidApp/tests/res',
-      'AndroidApp/tests/src',
+      'app',
+      'app/assets',
+      'app/libs',
+      'app/src/main/java/' + this.packageFolder,
+      'app/src/androidTest/java/' + this.packageFolder,  
+      'core-lib/src/main/java/' + this.packageFolder,
+      'api-lib/src/main/java/' + this.packageFolder
     ];
 
     this.log('\n' + chalk.green('Creating ') + 'project directories:');
@@ -110,16 +109,19 @@ var AndroidGradleGenerator = yeoman.generators.Base.extend({
     }
 
     this.log('\n' + chalk.green('Creating ') + 'android resources:');
-    this.directory('res', 'AndroidApp/res');
+    this.directory('res', 'app/src/main/res');
 
     this.log('\n' + chalk.green('Creating ') + 'android libs:');
-    this.directory('libs', 'AndroidApp/libs');
+    this.directory('libs', 'libs');
 
     this.log('\n' + chalk.green('Creating ') + 'android configurations:');
-    this.template('config/android/_AndroidManifest.xml', 'AndroidApp/AndroidManifest.xml');
-    this.template('config/android/_build.gradle', 'AndroidApp/build.gradle');
-    this.template('config/android/_proguard-project.txt', 'AndroidApp/proguard-project.txt');
-    this.template('config/android/_project.properties', 'AndroidApp/project.properties');
+    this.template('config/android/_AndroidManifest.xml', 'app/src/main/AndroidManifest.xml');
+    this.template('config/android/_build.gradle', 'app/build.gradle');
+    this.template('config/gradle/_libraries.gradle', 'libraries.gradle');
+    
+    this.log('\n' + chalk.green('Creating ') + 'java configurations:');
+    this.template('config/java/_build.gradle', 'core-lib/build.gradle');
+    this.template('config/java/_build.gradle', 'api-lib/build.gradle');
   }
 });
 
@@ -131,12 +133,7 @@ module.exports = AndroidGradleGenerator;
  */
 AndroidGradleGenerator.prototype.projectConfigFiles = function projectConfigFiles() {
   var _configs = [
-    'editorconfig',
-    'jshintrc',
-    'gitignore',
-    'checkstyle.xml',
-    'eclipse-formatter.xml',
-    'findbugs-exclude.xml'
+    'gitignore'
   ];
 
   this.log('\n' + chalk.green('Creating ') + 'project configuration files:');
@@ -144,10 +141,7 @@ AndroidGradleGenerator.prototype.projectConfigFiles = function projectConfigFile
 
   for(var idx = 0; idx < _configLength; idx++) {
       var s = _configs[idx];
-      if(s.substring(s.length - 3) === 'xml')
-        this.copy('config/project/_' + _configs[idx], _configs[idx]);
-      else
-        this.copy('config/project/_' + _configs[idx], '.' + _configs[idx]);
+      this.copy('config/project/_' + _configs[idx], '.' + _configs[idx]);
   }
 };
 
@@ -159,8 +153,7 @@ AndroidGradleGenerator.prototype.gradleConfigFiles = function gradleConfigFiles(
   var _configs = [
     'build.gradle',
     'gradle.properties',
-    'local.properties',
-    'settings.gradle'
+    'settings.gradle',
   ];
 
   this.log('\n' + chalk.green('Creating ') + 'gradle configuration files:');
@@ -177,13 +170,6 @@ AndroidGradleGenerator.prototype.gradleConfigFiles = function gradleConfigFiles(
 AndroidGradleGenerator.prototype.androidResFiles = function androidResFiles() {
   this.log('\n' + chalk.green('Creating ') + 'android resource files:');
 
-  this.template('config/android/_strings.xml', 'AndroidApp/res/values/strings.xml');
-  this.template('config/android/_main.xml', 'AndroidApp/res/menu/main.xml');
-
-  this.template('config/android/_fragment_main.xml', 'AndroidApp/res/layout/fragment_main.xml');
-  this.template('config/android/_activity_main.xml', 'AndroidApp/res/layout/activity_main.xml');
-
-  this.copy('config/android/web_hi_res_512.png', 'AndroidApp/web_hi_res_512.png');
 };
 
 /*
@@ -191,15 +177,4 @@ AndroidGradleGenerator.prototype.androidResFiles = function androidResFiles() {
  */
 AndroidGradleGenerator.prototype.androidSrcFiles = function androidSrcFiles() {
   this.log('\n' + chalk.green('Creating ') + 'android source files:');
-
-  var srcDir = 'AndroidApp/src/' + this.packageFolder + '/';
-  this.template('src/main/_MainActivity.java', srcDir + 'MainActivity.java');
-
-  srcDir += 'common/logger/';
-  this.template('src/main/common/logger/_Log.java', srcDir + 'Log.java');
-  this.template('src/main/common/logger/_LogFragment.java', srcDir + 'LogFragment.java');
-  this.template('src/main/common/logger/_LogNode.java', srcDir + 'LogNode.java');
-  this.template('src/main/common/logger/_LogView.java', srcDir + 'LogView.java');
-  this.template('src/main/common/logger/_LogWrapper.java', srcDir + 'LogWrapper.java');
-  this.template('src/main/common/logger/_MessageOnlyLogFilter.java', srcDir + 'MessageOnlyLogFilter.java');
 };

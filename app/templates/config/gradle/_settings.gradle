@@ -1,1 +1,1 @@
-include ":AndroidApp"
+include ":app", ":core-lib", ":api-lib"
