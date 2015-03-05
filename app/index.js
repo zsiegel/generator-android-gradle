@@ -23,7 +23,8 @@ var sdkVersions = [
     'API level 16: Android 4.1.x (Jelly Bean)',
     'API level 17: Android 4.2.x (Jelly Bean)',
     'API level 18: Android 4.3.x (Jelly Bean)',
-    'API level 19: Android 4.4 - 4.4.2 (KitKat)'
+    'API level 19: Android 4.4 - 4.4.2 (KitKat)',
+    'API level 21: Android 5.0 (KitKat)'
   ].map(function(name, value) {
     return {name: name, value: value};
 });
@@ -74,7 +75,11 @@ var AndroidGradleGenerator = yeoman.generators.Base.extend({
       this.appName = props.appName;
       this.packageName = props.packageName;
       this.minApiLevel = props.minApiLevel;
+      
       this.minAndroidSDK = (this.minApiLevel + 1);
+      if (this.minAndroidSDK >= 20) {
+        this.minAndroidSDK++;
+      }
 
       if(this.packageName !== undefined) {
         this.packageFolder = this.packageName.replace(/\./g, '/');
