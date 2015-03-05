@@ -97,7 +97,6 @@ var AndroidGradleGenerator = yeoman.generators.Base.extend({
   app: function () {
     var _appDir = [
       'app',
-      'app/assets',
       'app/libs',
       'app/src/main/java/' + this.packageFolder,
       'app/src/androidTest/java/' + this.packageFolder,  
