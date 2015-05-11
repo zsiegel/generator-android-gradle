@@ -1,64 +1,62 @@
 ext {
 
-    minSdkVersion = <%=minAndroidSDK%>
-    compileSdkVersion = 21
-    buildToolsVersion = '21.1.2'
+    minSdkVersion = 14
+    compileSdkVersion = 22
+    buildToolsVersion = '22.0.1'
 
     //Android
-    daggerVersion = '1.2.2'
+    androidSupportVersion = '22.1.1'
+    appCompatVersion = '22.1.1'
+    recyclerViewVersion = '22.1.1'
+
+    daggerVersion = '2.0'
     ottoVersion = '1.3.5'
     butterknifeVersion = '6.1.0'
-    androidSupportVersion = '21.0.+'
     rxandroidVersion = '0.23.0'
-    appCompatVersion = '21.0.+'
-    recyclerViewVersion = '+'
-    cardViewVersion = '+'
-    assertJVersion = '1.0.0'
-    picassoVersion = '2.5.0'
-    googlePlayServicesVersion = '6.5.+'
+    glassfishAnnotationVersion = '10.0-b28'
 
     //Java
-    rxjavaVersion = '1.0.7'
-    javaxInjectVersion = '1'
-    retrofitVersion = '1.8.0'
-    okhttpVersion = '2.1.0'
-    commonsCodecVersion = '1.7'
+    rxjavaVersion = '1.0.10'
+    retrofitVersion = '1.9.0'
+    okhttpVersion = '2.3.0'
     gsonVersion = '2.3'
-    findbugsVersion = '2.0.3'
-    commonsCodecVersion = '1.7'
 
     //Testing
     junitVersion = '4.11'
-    dexmakerVersion = '1.1'
+    dexmakerVersion = '1.2'
     mockitoVersion = '1.9.5'
+    assertJVersion = '1.0.0'
+    espressoVersion = '2.1'
+    testSupportVersion = '0.2'
 
     libraries = [
-            googlePlayServicesLocation: "com.google.android.gms:play-services-location:" + googlePlayServicesVersion,
-            recyclerView              : "com.android.support:recyclerview-v7:" + recyclerViewVersion,
-            picasso                   : "com.squareup.picasso:picasso:" + picassoVersion,
-            cardView                  : "com.android.support:cardview-v7:" + cardViewVersion,
-            appCompat                 : "com.android.support:appcompat-v7:" + appCompatVersion,
-            gson                      : "com.google.code.gson:gson:" + gsonVersion,
-            otto                      : "com.squareup:otto:" + ottoVersion,
-            butterknife               : "com.jakewharton:butterknife:" + butterknifeVersion,
-            dagger                    : "com.squareup.dagger:dagger:" + daggerVersion,
-            daggerCompiler            : "com.squareup.dagger:dagger-compiler:" + daggerVersion,
-            rxjava                    : "io.reactivex:rxjava:" + rxjavaVersion,
-            rxandroid                 : "io.reactivex:rxandroid:" + rxandroidVersion,
-            androidSupport            : "com.android.support:support-v13:" + androidSupportVersion,
-            javaxInject               : "javax.inject:javax.inject:" + javaxInjectVersion,
-            retrofit                  : "com.squareup.retrofit:retrofit:" + retrofitVersion,
-            okhttp                    : "com.squareup.okhttp:okhttp:" + okhttpVersion,
-            okhttpurl                 : "com.squareup.okhttp:okhttp-urlconnection:" + okhttpVersion,
-            commons_codec             : "commons-codec:commons-codec:" + commonsCodecVersion,
+            recyclerView    : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            appCompat       : "com.android.support:appcompat-v7:${appCompatVersion}",
+            gson            : "com.google.code.gson:gson:${gsonVersion}",
+            otto            : "com.squareup:otto:${ottoVersion}",
+            butterknife     : "com.jakewharton:butterknife:${butterknifeVersion}",
+            dagger          : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler  : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            rxjava          : "io.reactivex:rxjava:${rxjavaVersion}",
+            rxandroid       : "io.reactivex:rxandroid:${rxandroidVersion}",
+            androidSupportv7: "com.android.support:support-v13:${androidSupportVersion}",
+            androidSupportv4: "com.android.support:support-v4:${androidSupportVersion}",
+            retrofit        : "com.squareup.retrofit:retrofit:${retrofitVersion}",
+            okhttp          : "com.squareup.okhttp:okhttp:${okhttpVersion}",
+            okhttpurl       : "com.squareup.okhttp:okhttp-urlconnection:${okhttpVersion}",
+            glassfish       : "org.glassfish:javax.annotation:${glassfishAnnotationVersion}"
     ]
 
     testLibraries = [
-            assertJAndroid : "com.squareup.assertj:assertj-android:" + assertJVersion,
-            dexmaker       : "com.google.dexmaker:dexmaker:" + dexmakerVersion,
-            dexmakerMockito: "com.google.dexmaker:dexmaker-mockito:" + dexmakerVersion,
-            mockito        : "org.mockito:mockito-core:" + mockitoVersion,
-            junit          : "junit:junit:" + junitVersion,
+            assertJAndroid   : "com.squareup.assertj:assertj-android:${assertJVersion}",
+            dexmaker         : "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+            dexmakerMockito  : "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+            mockito          : "org.mockito:mockito-core:${mockitoVersion}",
+            junit            : "junit:junit:${junitVersion}",
+            mockwebserver    : "com.squareup.okhttp:mockwebserver:${okhttpVersion}",
+            espresso         : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            testSupportRunner: "com.android.support.test:runner:${testSupportVersion}",
+            testSupportRules : "com.android.support.test:rules:${testSupportVersion}"
     ]
 
 }
